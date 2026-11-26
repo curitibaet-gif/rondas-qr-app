@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123b67"><link rel="manifest" href="manifest.webmanifest">
+<title>Rondas QR — Offline</title>
+<style>
+:root{font-family:system-ui,-apple-system,Arial;color:#17212b;background:#f2f5f8}*{box-sizing:border-box}body{margin:0;padding:16px;padding-bottom:calc(24px + env(safe-area-inset-bottom))}.wrap{max-width:680px;margin:auto}header{background:#123b67;color:white;padding:18px;border-radius:16px}h1{font-size:23px;margin:0 0 6px}h2{font-size:18px;margin:0 0 12px}.card{background:#fff;padding:16px;border-radius:16px;margin:12px 0;box-shadow:0 2px 10px #1020300d}label{display:block;font-size:14px;margin:12px 0 6px}input,select,button{width:100%;font:inherit;border-radius:11px;padding:13px;border:1px solid #ccd5df;background:#fff}button{background:#175cd3;color:white;border:0;font-weight:700;margin-top:10px}button.secondary{background:#e9eff6;color:#17212b}button:disabled{opacity:.5}video,img{width:100%;border-radius:12px;background:#111;max-height:50vh;object-fit:cover}.muted{font-size:13px;color:#617083}.status{padding:12px;background:#eef4ff;border-radius:10px;white-space:pre-wrap;margin:10px 0}.hidden{display:none!important}.row{display:flex;gap:8px}.row>*{flex:1}.item{border-top:1px solid #e6ebf0;padding:10px 0;font-size:13px;overflow-wrap:anywhere}.pill{display:inline-block;background:#e9f2ff;color:#174b87;border-radius:20px;padding:5px 9px;font-size:12px}
+</style>
+</head>
+<body><div class="wrap">
+<header><h1>Rondas QR</h1><div>Registro de pontos com armazenamento offline</div><p><span class="pill" id="net">Verificando conexão…</span> <span class="pill" id="pending">0 pendentes</span></p></header>
+<section class="card" id="access"><h2>Identificação do vigilante</h2><label>Nome / usuário</label><input id="guard" placeholder="Ex.: vigia1" autocomplete="username"><label>Turno</label><select id="shift"><option value="DIURNO">Diurno (07h–19h)</option><option value="NOTURNO">Noturno (19h–07h)</option></select><button id="start">Iniciar ronda</button><p class="muted">Nesta etapa, o identificador é local. O login seguro e validação pelo servidor serão integrados antes da operação real.</p></section>
+<section class="card hidden" id="work"><h2>Registrar ponto</h2><p class="muted">Leia o QR da área e fotografe o local. O registro é salvo no aparelho mesmo sem internet.</p>
+<button id="scan">Ler QR pela câmera</button><video id="video" class="hidden" autoplay playsinline></video><canvas id="canvas" class="hidden"></canvas>
+<label>Se o leitor automático não estiver disponível, informe o código impresso no QR</label><input id="code" placeholder="AREA01" autocapitalize="characters">
+<div id="area" class="status hidden"></div>
+<button id="camera" class="secondary">Abrir câmera para foto</button><video id="photoVideo" class="hidden" autoplay playsinline></video><button id="capture" class="hidden">Capturar foto</button><img id="preview" class="hidden" alt="Prévia da fotografia">
+<button id="save" disabled>Salvar ponto neste aparelho</button><div id="msg" class="status hidden"></div>
+</section>
+<section class="card"><h2>Registros deste aparelho</h2><p class="muted">Os registros ficam neste dispositivo até serem exportados/sincronizados. Não limpe os dados do navegador antes de fazer backup.</p><button class="secondary" id="export">Exportar registros pendentes (JSON)</button><button class="secondary" id="refresh">Atualizar lista</button><div id="records"></div></section>
+</div>
+<script src="app.js"></script>
+</body></html>

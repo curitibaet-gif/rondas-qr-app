@@ -1,0 +1,31 @@
+RONDAS QR — ETAPA OFFLINE (PROTÓTIPO LOCAL)
+
+Conteúdo:
+- index.html: interface mobile/PWA
+- app.js: captura de dados e armazenamento local IndexedDB
+- sw.js: cache offline da interface
+- manifest.webmanifest: instalação na tela inicial
+
+IMPORTANTE — NÃO É AINDA A VERSÃO OPERACIONAL
+Esta etapa demonstra a base offline. Ela não possui autenticação segura, sincronização com Google Drive/Planilhas nem validação do servidor. O campo do vigia é apenas identificação local. Não utilizar em operação real até concluir backend, login, sincronização e testes.
+
+QR:
+- O leitor usa BarcodeDetector, disponível em alguns navegadores Android/Chrome.
+- Em navegadores sem BarcodeDetector (incluindo versões de iOS), nesta etapa deve-se digitar manualmente o código AREA01–AREA20. Para leitura automática universal, será necessário empacotar uma biblioteca decodificadora QR local dentro do projeto; não usar CDN, pois isso quebra offline.
+
+INSTALAÇÃO DE TESTE:
+1. Hospede os arquivos em HTTPS (GitHub Pages ou outro host estático).
+2. Abra o endereço com internet em Safari/Chrome e permita câmera.
+3. Instale/adicionar à tela inicial.
+4. Abra uma vez online para cachear a interface.
+5. Faça um teste em modo avião: criar registro, foto e confirmar que aparece em “Registros deste aparelho”.
+6. Exportar JSON para backup.
+
+O arquivo exportado contém fotos em base64 e pode ficar grande. Mantenha o aparelho protegido e não compartilhe o arquivo publicamente.
+
+PRÓXIMA FASE:
+- QR decoder local compatível iOS/Android;
+- login por usuário e senha validados pelo servidor;
+- endpoint seguro e sincronização idempotente com Apps Script;
+- envio das fotos privadas ao Drive e confirmação de sincronização;
+- regras de escala 12x36, bloqueio de duplicidade e relatórios administrativos.

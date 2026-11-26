@@ -1,0 +1,9 @@
+{
+  "name": "Rondas QR",
+  "short_name": "Rondas QR",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f2f5f8",
+  "theme_color": "#123b67",
+  "description": "Registro local de rondas QR com suporte offline"
+}
